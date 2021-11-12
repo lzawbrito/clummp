@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'r@ee-m0grecg(gz0^hf$ao2vhfw%ioflbzx83myxabydzjo0&7'
+SECRET_KEY = open('/home/lzawbrito/PythonProjects/clummp/auths/secret_key', 'r').readlines()[0]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
