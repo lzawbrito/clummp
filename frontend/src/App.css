@@ -1,0 +1,20 @@
+:root {
+  --bg: rgb(0, 3, 36);
+}
+
+.App {
+  text-align: center;
+  color: white;
+}
+
+body {
+  background-color: var(--bg);
+}
+
+.visDisplay {
+  padding-top: 30px;
+  display: block;
+}
+
+
+

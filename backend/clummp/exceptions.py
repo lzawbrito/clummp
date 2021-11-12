@@ -1,0 +1,2 @@
+class ApiQueryError(Exception):
+    pass
