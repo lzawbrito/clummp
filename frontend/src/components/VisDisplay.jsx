@@ -1,37 +1,59 @@
-import InnerHtml from 'dangerously-set-html-content'
-import * as d3 from 'd3'
 import createPlotlyComponent from 'react-plotly.js/factory';
 import Plotly from 'plotly.js'
 const Plot = createPlotlyComponent(Plotly);
 
 export default function VisDisplay(props) {
-        const h = 600
-        const gap = 0.1
-        const data = [
+    const sims = props.sims
+    // const w = 600
+    const gap = 0.1
+    const data = [
         {
-            z: [[1,2],[3,4]], // props.data,
+            z: props.obs,
             type: 'heatmap',
             showscale: false,
         },
         {
-            z: [[2,2],[1,2]], // props.data,
+            z: props.sims[0].data,
             type: 'heatmap',
             showscale: false,
             xaxis: 'x2', 
-            yaxis: 'y2'
+            yaxis: 'y2',
         },
     ]
 
     const layout = {
+        font: {family: 'Roboto Mono, monospace'},
+        plot_bgcolor: '#141414',
+        paper_bgcolor: '#141414',
         grid: {rows:1, columns: 2, pattern: 'independent', xgap: gap},
-        width: (2 * h) / (1 - (gap / 2)), 
-        height: h,
-        title: "test",
-        yaxis: {scaleanchor: 'x'},
-        yaxis2: {scaleanchor: 'x2'}
+        xaxis: {color: 'white'},
+        xaxis2: {color: 'white'},
+        yaxis: {scaleanchor: 'x', color: 'white'},
+        yaxis2: {scaleanchor: 'x2', color: 'white'},
+        annotations: [{
+                text: "Observation",
+                font: {size: 24, color: 'white'},
+                showarrow: false,
+                align: 'center',
+                x: 0.25, //position in x domain
+                y: 1.1, //position in y domain
+                xref: 'paper',
+                yref: 'paper',
+            },
+                {
+                text: "Simulation 1",
+                font: {size: 24, color: 'white'},
+                showarrow: false,
+                align: 'center',
+                x: 0.75, //position in x domain
+                y: 1.1,  // position in y domain
+                xref: 'paper',
+                yref: 'paper',
+                }
+            ]
     }
 
     return <div className='visDisplay'>
-        <Plot data={data} layout={layout}></Plot>
+        <Plot divId="visDisplay" data={data} layout={layout}></Plot>
     </div>
 }

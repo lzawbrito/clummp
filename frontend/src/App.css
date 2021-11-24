@@ -1,10 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
 :root {
-  --bg: rgb(0, 3, 36);
+  --bg: rgb(20, 20, 20);
+  --error: rgb(255, 77, 77);
+  --success: rgb(112, 233, 81);
+  --sidebar-gray: rgb(51, 51, 51);
+  --sidebar-width: 420px;
+  --font-color: white;
+  --highlight-color: rgba(246, 140, 0, 0.959);
+  --default-font-size: 16px;
+  --sidebar--padding: 20px;
 }
 
 .App {
-  text-align: center;
-  color: white;
+  text-align: left;
+  font-family: 'Roboto Mono', monospace;
+  color: var(--font-color);
+  display: grid; 
+  grid-template-columns: var(--sidebar-width) auto;
+  font-size: var(--default-font-size);
 }
 
 body {
@@ -12,9 +26,169 @@ body {
 }
 
 .visDisplay {
-  padding-top: 30px;
+  /* padding-top: 30px; */
   display: block;
 }
 
+.statusBar, .hiddenStatusBar {
+  display: flex;
+  justify-content: center;
+}
 
+.hiddenStatusBar {
+  opacity: 0;
+}
 
+.status {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  padding-right: 10px
+}
+
+.errorMsg {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  height: 64px;
+  color: var(--error);
+  text-align: center;
+}
+
+.successMsg {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  height: 64px;
+  color: var(--success);
+  text-align: center;
+}
+
+.sideBar {
+  z-index: 2;
+  padding-left: var(--sidebar--padding);
+  padding-right: var(--sidebar--padding);
+  background-color: var(--sidebar-gray);
+  height: 100vh;
+}
+
+.centerText {
+  text-align: center;
+}
+
+#title {
+
+}
+
+#subtitle {
+  font-style: italic;
+  color: var(--highlight-color);
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+#versionTag {
+  font-weight: normal;
+  font-style: italic;
+  color: var(--highlight-color);
+  font-size: 18px;
+  margin-left: 4px;
+}
+
+input {
+  background-color: var(--bg);
+  border: none;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+  font-size: var(--default-font-size);
+}
+
+input:focus {
+  outline: none;
+}
+
+select {
+  background-color: var(--bg);
+  color: white;
+  border: none;
+  font-family: 'Roboto Mono', monospace;
+  font-size: var(--default-font-size);
+}
+
+button {
+  font-family: 'Roboto Mono', monospace; 
+  font-style: italic; 
+  font-size: var(--default-font-size);
+  background-color: var(--highlight-color);
+  border-style: solid;
+  border-color: rgb(209, 118, 0)
+}
+
+button:hover {
+  background-color: rgb(209, 118, 0)
+}
+
+button:active {
+  background-color: rgb(189, 107, 0);
+  border-color: rgb(189, 107, 0);
+}
+
+button:disabled {
+  background-color: rgb(189, 107, 0);
+  border-color: rgb(189, 107, 0);
+}
+
+.textBox {
+  display: flex;
+  padding-bottom: 10px;
+}
+
+.textBox input {
+  flex-grow: 1;
+}
+
+.flexSpaced {
+  display: flex; 
+  justify-content: space-between;
+}
+
+#visDisplay {
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+#visFiller {
+  display: flex; 
+  justify-content: center;
+  align-items:center;
+  font-style: italic;
+  color: gray;
+}
+
+#fileList {
+  overflow-x: scroll;
+  height: 200px;
+  overflow-x: hidden;
+}
+
+table {
+  border-spacing: 0px 0px;
+  /* padding-right: 10px; */
+  margin-right: 0px;
+  width: 100%;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(39, 39, 39);
+}
+
+tr:nth-child(odd) {
+  background-color: rgb(47, 47, 47);
+}

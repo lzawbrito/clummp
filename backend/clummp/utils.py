@@ -11,7 +11,6 @@ def dump_data(path):
         os.remove(os.path.join(path, f))
 
 
-
 def unzip(file_path):
     dirname = os.path.dirname(file_path)
     out_filename = os.path.basename(file_path).replace('.gz', '')

@@ -1,6 +1,5 @@
 import girder_client 
 from os import path
-# from .exceptions import ApiQueryError
 
 BASE_URL = 'https://girder.hub.yt/api/v1/'
 AUTH = 'api-auths/creds'
@@ -82,6 +81,8 @@ def download_file(sim_file_id, download_path, auth):
     except FileExistsError as e: 
         print(f'Warning: {download_path} already exists, skipping download.')
         return 
+
+    
 
 
 
