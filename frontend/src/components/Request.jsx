@@ -51,7 +51,7 @@ export default function Request(props) {
     <TextBox text='Observed data' change={setObsPath}></TextBox> 
     <div className="flexSpaced">
         <span>
-        <SelectMenu text='Number of candidates' change={setN} options={["1", "2"]}></SelectMenu>
+        <SelectMenu text='Number of candidates' change={setN} options={["1", "2", "3", "4", "5"]}></SelectMenu>
         </span>
         <button onClick={handleRequest}>Submit</button>
     </div>

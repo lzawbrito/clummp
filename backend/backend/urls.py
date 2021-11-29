@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/candidates/', views.CandidatesView),
+    path('api/transform/<action>/', views.TransformView)
 ]

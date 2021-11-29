@@ -4,7 +4,14 @@ import ControlPanel from './ControlPanel'
 export default function SideBar(props) {
 	function controlPanel(data) {
 		if (data.sims.length !== 0) {
-			return <ControlPanel data={props.data}></ControlPanel>
+			return <ControlPanel 
+				data={props.data} 
+				setData={props.setData} 
+				toggleViewSim={props.toggleViewSim} 
+				setVis={props.setVis} 
+				vis={props.vis}
+				setActiveSim={props.setActiveSim} 
+			/>
 		} else {
 			return <></>
 		}

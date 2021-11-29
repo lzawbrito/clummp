@@ -5,13 +5,23 @@ from .models import Simulation
 from django.views.decorators.csrf import csrf_exempt,csrf_protect
 import json
 from django.http import JsonResponse
-from .backend_pipeline import run_pipeline
+from .backend_pipeline import run_pipeline, transform_file
 import numpy as np 
+import json 
 
 
 class SimulationView(viewsets.ModelViewSet):
     serializer_class = SimulationSerializer
     queryset = Simulation.objects.all()
+
+@csrf_exempt 
+def TransformView(request, action):
+    print(request.GET)
+    print(request)
+    filename = request.GET.get('filename', default='')
+    print(filename)
+    trans_data = transform_file(filename, action)
+    return JsonResponse(trans_data)
 
 
 @csrf_exempt
@@ -21,9 +31,9 @@ def CandidatesView(request):
 
     print(f'Received request for {n} candidate(s) similar to {obs_path}')
     # TODO better exception handling 
-    # y: 
     status = 200
     obs, sims = run_pipeline(obs_path, n)
+
 
     # Convert to list for json serialization
     print('Responding to request.')

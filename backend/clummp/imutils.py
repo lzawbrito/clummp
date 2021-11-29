@@ -1,11 +1,49 @@
 import numpy as np 
 import cv2
 from .mathutils import get_level_curves, get_com, dist, norm 
+from scipy import ndimage
 
 LEVEL_CURVES = 10
 def format_ndarray(a):
+	a = np.array(a)
 	return a.astype(np.float64)
 
+def rotate(data):
+	data = format_ndarray(np.array(data))
+	return cv2.rotate(data, cv2.ROTATE_180)
+
+def flip_y(data): 
+	data = format_ndarray(data)
+	return cv2.flip(data, 1)
+
+def flip_x(data): 
+	data = format_ndarray(data)
+	return cv2.flip(data, 0)
+
+def simple_transform(data, action):
+	"""
+	
+	Params
+	------
+	- `data`: 2d array or list containing image data.
+	- `action`: a string representing the transformation to be performed on the 
+	            image. One of 
+		- `'cw'`: 180 clockwise rotation
+		- `'flip-x'`: flip about horizontal axis 
+		- `'flip-y'`: flip about vertical axis
+
+	Returns
+	------
+	Transformed data.
+	"""
+	if action == 'cw':	
+		return rotate(data)
+	elif action == 'flip-x':	
+		return flip_x(data)
+	elif action == 'flip-y':		
+		return flip_y(data)
+	else: 
+		raise ValueError('Inappropriate action for `simple_transform`: ' + action)
 
 def construct_dest_triangle(im): 
 	# Format image for usage with cv2
