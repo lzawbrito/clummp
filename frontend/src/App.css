@@ -79,6 +79,7 @@ body {
   z-index: 2;
   padding-left: var(--sidebar--padding);
   padding-right: var(--sidebar--padding);
+  /* padding-top: var(--sidebar--padding); */
   background-color: var(--sidebar-gray);
   height: 100vh;
 }
@@ -88,7 +89,7 @@ body {
 }
 
 #title {
-
+  
 }
 
 #subtitle {
@@ -238,4 +239,10 @@ button img {
   display: block;
   height: 24px;
   width: 24px;
+}
+
+#info {
+  position: fixed;
+  top: var(--sidebar--padding);
+  filter: invert(47%) sepia(83%) saturate(2452%) hue-rotate(14deg) brightness(112%) contrast(102%);
 }
