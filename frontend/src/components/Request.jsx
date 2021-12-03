@@ -5,7 +5,18 @@ import ReactLoading from 'react-loading'
 import StatusBar from './StatusBar';
 import SelectMenu from './SelectMenu';
 
+var applyLog = false 
+
 export default function Request(props) {
+    const setApplyLog = (str) => {
+        if (str === 'Yes') {
+            applyLog = true 
+        } else if (str === 'No') {
+            applyLog = false 
+        } else {
+            return 
+        }
+    };
     const axios = require('axios').default;
     const [obsPath, setObsPath] = useState('');
     const [n, setN] = useState("1");
@@ -20,7 +31,8 @@ export default function Request(props) {
         axios.get('/api/candidates/', {
             params: {
                 n: parseInt(n),
-                obsPath: obsPath
+                obsPath: obsPath,
+                applyLog: applyLog
             }
         })
             .then((response) => {
@@ -47,13 +59,24 @@ export default function Request(props) {
             });
         }
 
+
+    var submitButton = <button onClick={handleRequest}>Submit</button>
+    if (status === 'loading') {
+        submitButton = <button disabled>Submit</button>
+    }
+
     return <>
     <TextBox text='Observed data' change={setObsPath}></TextBox> 
+    <div style={{marginBottom:'10px'}}>
+        <span>
+        <SelectMenu text='Apply logscale to obs.' change={setApplyLog} options={["No", "Yes"]}></SelectMenu>
+        </span>
+    </div>
     <div className="flexSpaced">
         <span>
         <SelectMenu text='Number of candidates' change={setN} options={["1", "2", "3", "4", "5"]}></SelectMenu>
         </span>
-        <button onClick={handleRequest}>Submit</button>
+        {submitButton}
     </div>
     <StatusBar task='Getting data...' status={status} error={error}></StatusBar>
     </>

@@ -1,27 +1,77 @@
 import numpy as np 
 import cv2
+
+from .exceptions import LevelCurveError
 from .mathutils import get_level_curves, get_com, dist, norm 
 from scipy import ndimage
 
 LEVEL_CURVES = 10
 def format_ndarray(a):
+	"""
+	Convert an array for usage with cv2. 
+
+	Params
+	------
+	- `a`: an array-like object
+	
+	Returns
+	------
+	The array `a` as a numpy ndarray with type float64.
+	"""
 	a = np.array(a)
 	return a.astype(np.float64)
 
 def rotate(data):
+	"""
+	Convenience function for formatting image data then applying OpenCV 180 
+	degree rotation.
+
+	Params
+	------
+	- `data`: image data as an array
+	
+	Returns
+	------
+	Rotated image data as a numpy ndarray.
+	"""
 	data = format_ndarray(np.array(data))
 	return cv2.rotate(data, cv2.ROTATE_180)
 
 def flip_y(data): 
+	"""
+	Convenience function for formatting image data then applying OpenCV flip 
+	about y axis (i.e., a horizontal flip).
+
+	Params
+	------
+	- `data`: image data as an array
+	
+	Returns
+	------
+	Flipped image data as a numpy ndarray.
+	"""
 	data = format_ndarray(data)
 	return cv2.flip(data, 1)
 
 def flip_x(data): 
+	"""
+	Convenience function for formatting image data then applying OpenCV flip 
+	about x axis (i.e., a vertical flip).
+
+	Params
+	------
+	- `data`: image data as an array
+	
+	Returns
+	------
+	Flipped image data as a numpy ndarray.
+	"""
 	data = format_ndarray(data)
 	return cv2.flip(data, 0)
 
 def simple_transform(data, action):
 	"""
+	Apply the given transformation to the data. 
 	
 	Params
 	------
@@ -46,6 +96,24 @@ def simple_transform(data, action):
 		raise ValueError('Inappropriate action for `simple_transform`: ' + action)
 
 def construct_dest_triangle(im): 
+	"""
+	Constructs destination triangle for use with affine transformation aligning 
+	sources horizontally. Uses level sets to find sources, generates an 
+	arbitrary third vertex, then returns a reference triangle such that the 
+	sources are horizontally centered in the image, and the midpoint of the 
+	segment connecting the two sources is centered vertically. 
+
+	Preserves width, height, and scale of image (i.e., the pixel distance 
+	between the two sources).
+
+	Params
+	------
+	- `im`: Image data as an array
+	
+	Returns
+	------
+	A 3-by-2 ndarray containing the three triangle vertices.
+	"""
 	# Format image for usage with cv2
 	im = format_ndarray(np.array(im))
 
@@ -73,6 +141,8 @@ def construct_dest_triangle(im):
 			apex = np.array([- dcom[1], dcom[0]]) + np.array(midpoint)
 			break 
 	
+	if midpoint is None or dcom is None or com1 is None or com2 is None: 
+		raise LevelCurveError('No level set with two paths found.')
 	# Position reference triangle so that base is horizontal and midpoint 
 	# of base is in center. 
 	dest_com1 = (- dist(com1, midpoint) + (width / 2), height / 2)
@@ -84,6 +154,22 @@ def construct_dest_triangle(im):
 
 
 def align_image(im, dest_tri, dsize): 
+	"""
+	Transform the given image such that the two level-curve-obtained sources 
+	lie on the first and third coordinates provided by the given destination 
+	triangle. 
+
+	Params
+	------
+	- `im`: image data as an array
+	- `dest_tri`: a 3-by-2 array contaning the vertices of the destination 
+				  to be used by the affine transformation.
+	- `dsize`: the dimensions of the resulting image in pixels.  
+	
+	Returns
+	------
+	An ndarray of the transformed image data. 
+	"""
 	assert len(dsize) == 2
 	width, height = dsize
 
@@ -117,6 +203,21 @@ def align_image(im, dest_tri, dsize):
 			
 	
 def crop(im, coms, scale):
+	"""
+	Crop the given image such that the edges of the image are `scale * dist(com1,
+	com2))` away from the center. 
+
+	Params
+	------
+	- `im`: image data as an array
+	- `coms`: `(com1, com2)`, the coordinates of the given two sources
+	- `scale`: how many times the pixel distance between the sources we will 
+				crop away from the center of the image.
+	
+	Returns
+	------
+	An ndarray with cropped image data.
+	"""
 	im = format_ndarray(np.array(im))
 	width, height = np.shape(im)
 	coms = np.array(coms)

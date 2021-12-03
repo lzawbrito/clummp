@@ -17,6 +17,30 @@ def query_n_body_catalog(mass_ratio,
                          t, 
                          proj_axis, 
                          auth):
+    """
+    Obtain the id and filename of the GCMC simulation with the given parameters 
+    and timestep nearest to provided.
+    
+    Params
+    ------
+    - `mass_ratio`: mass ratio of two clusters. One of 
+        - `'1to1'
+        - `'1to3'
+        - `'1to10'
+    - `imp_param`: impact parameter of the merger. One of 0, 0.5, 1
+    - `t`: the time step of the simulation. 
+    - `proj_axis`: projection axis of the simulation image. One of `'x'`, `'y'`,
+        `'z'`.
+    - `auth`: a dictionary with values `'username'` and `'password'` to use for 
+        authenticating Girder API. 
+    
+    Returns
+    ------
+    A tuple with 
+        - The Girder id of the obtained file as a string
+        - The name of the obtained file as a string 
+    """
+
     query = {
         'mass_ratio': mass_ratio,
         'imp_param': f'b{imp_param}',
@@ -68,8 +92,22 @@ def query_n_body_catalog(mass_ratio,
     print(f'Found file {sim_file_name} with id {sim_file_id}.')
     return sim_file_id, sim_file_name
 
-def download_file(sim_file_id, download_path, auth):
 
+def download_file(sim_file_id, download_path, auth):
+    """
+    Download the file with the given Girder id. 
+
+    Params
+    ------
+    - `sim_file_id`: Girder id of file, string. 
+    - `download_path`: download path of file, string
+    - `auth`: a dictionary with values `'username'` and `'password'` to use for 
+        authenticating Girder API. 
+    
+    Returns
+    ------
+    None
+    """
     username = auth['username']
     password = auth['password']
     gc = girder_client.GirderClient(apiUrl=BASE_URL)

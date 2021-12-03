@@ -1,5 +1,9 @@
 import { activeRank } from "./ControlPanel";
 
+function girderLink(id) {
+	return `https://girder.hub.yt/#item/${id}`
+}
+
 const dummyData = [
 	{
 		rank: 1, 
@@ -54,6 +58,9 @@ export default function SimMenu(props) {
 				{sim.name}
 			</td> */}
 			<td align="right" >
+				<a href={girderLink(sim.id)} target='_blank' rel="noreferrer" >
+					<button className="visButton" style={{marginRight: '5px'}}>Open</button>
+				</a>
 				{button}
 			</td>
 		</tr>

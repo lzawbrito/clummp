@@ -8,6 +8,7 @@ class Simulation(models.Model):
     impact_parameter = models.CharField(max_length=10)
     proj_axis = models.CharField(max_length=1)
     centroid_distance = models.FloatField(default=-1.)
+    container_id = models.CharField(max_length=120, default="")
 
     def _str_(self): 
         return self.id

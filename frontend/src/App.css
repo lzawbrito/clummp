@@ -14,10 +14,10 @@
   --button-dim: rgb(209, 118, 0);
   --button-border: rgb(209, 118, 0);
   --button-active: rgb(189, 107, 0);
-  --alt-button-color: rgb(109, 186, 231);
-  --alt-button-dim: rgb(96, 167, 207);
-  --alt-button-border: rgb(98, 171, 212);
-  --alt-button-active: rgb(92, 147, 179);
+  --alt-button-color: rgb(194, 194, 194);
+  --alt-button-dim: rgb(179, 179, 179);
+  --alt-button-border: rgb(156, 156, 156);
+  --alt-button-active: rgb(156, 156, 156);
 }
 
 .App {
@@ -217,22 +217,22 @@ tr:nth-child(odd) {
 }
 
 .visButton {
-  background-color: var(--button-color);
-  border-color: var(--button-border);
+  background-color: var(--alt-button-color);
+  border-color: var(--alt-button-border);
 }
 
 .visButton:hover {
-  background-color: var(--button-dim);
+  background-color: var(--alt-button-dim);
 }
 
 .visButton:disabled {
-  background-color: var(--button-active);
-  border-color: var(--button-active);
+  background-color: var(--alt-button-active);
+  border-color: var(--alt-button-active);
 }
 
 .visButton:active {
-  background-color: var(--button-active);
-  border-color: var(--button-active)
+  background-color: var(--alt-button-active);
+  border-color: var(--alt-button-active)
 }
 
 button img {

@@ -4,7 +4,16 @@ import shutil
 
 def dump_data(path): 
     """
-    https://www.techiedelight.com/delete-all-files-directory-python/
+    From: https://www.techiedelight.com/delete-all-files-directory-python/
+    Delete all files in the given directory. 
+    
+    Params
+    ------
+    - `path`: the path to the directory as a string
+    
+    Returns
+    ------
+    None
     """
 
     for f in os.listdir(path):
@@ -12,6 +21,17 @@ def dump_data(path):
 
 
 def unzip(file_path):
+    """
+    Unzips the given `.gz` file to the same directory as the file. 
+    
+    Params
+    ------
+    - `file_path`: path to file to unzip as a string
+    
+    Returns
+    ------
+    None
+    """
     dirname = os.path.dirname(file_path)
     out_filename = os.path.basename(file_path).replace('.gz', '')
     print('Unzipping ' + file_path)
