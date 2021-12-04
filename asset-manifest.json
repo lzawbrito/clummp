@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/clummp/static/css/main.541990e8.chunk.css",
-    "main.js": "/clummp/static/js/main.c779eb45.chunk.js",
-    "main.js.map": "/clummp/static/js/main.c779eb45.chunk.js.map",
-    "runtime-main.js": "/clummp/static/js/runtime-main.2e5dd821.js",
-    "runtime-main.js.map": "/clummp/static/js/runtime-main.2e5dd821.js.map",
-    "static/js/2.9f168a03.chunk.js": "/clummp/static/js/2.9f168a03.chunk.js",
-    "static/js/2.9f168a03.chunk.js.map": "/clummp/static/js/2.9f168a03.chunk.js.map",
-    "static/js/3.f30e5f2d.chunk.js": "/clummp/static/js/3.f30e5f2d.chunk.js",
-    "static/js/3.f30e5f2d.chunk.js.map": "/clummp/static/js/3.f30e5f2d.chunk.js.map",
+    "main.css": "/clummp/static/css/main.f9ffb6f7.chunk.css",
+    "main.js": "/clummp/static/js/main.17a4ac72.chunk.js",
+    "main.js.map": "/clummp/static/js/main.17a4ac72.chunk.js.map",
+    "runtime-main.js": "/clummp/static/js/runtime-main.91596db6.js",
+    "runtime-main.js.map": "/clummp/static/js/runtime-main.91596db6.js.map",
+    "static/js/2.3cdb97b6.chunk.js": "/clummp/static/js/2.3cdb97b6.chunk.js",
+    "static/js/2.3cdb97b6.chunk.js.map": "/clummp/static/js/2.3cdb97b6.chunk.js.map",
+    "static/js/3.7c788846.chunk.js": "/clummp/static/js/3.7c788846.chunk.js",
+    "static/js/3.7c788846.chunk.js.map": "/clummp/static/js/3.7c788846.chunk.js.map",
     "index.html": "/clummp/index.html",
-    "static/css/main.541990e8.chunk.css.map": "/clummp/static/css/main.541990e8.chunk.css.map",
-    "static/js/2.9f168a03.chunk.js.LICENSE.txt": "/clummp/static/js/2.9f168a03.chunk.js.LICENSE.txt",
+    "static/css/main.f9ffb6f7.chunk.css.map": "/clummp/static/css/main.f9ffb6f7.chunk.css.map",
+    "static/js/2.3cdb97b6.chunk.js.LICENSE.txt": "/clummp/static/js/2.3cdb97b6.chunk.js.LICENSE.txt",
     "static/media/edit-flip-h-svgrepo-com.57019281.svg": "/clummp/static/media/edit-flip-h-svgrepo-com.57019281.svg",
     "static/media/edit-flip-v-svgrepo-com.12c6485d.svg": "/clummp/static/media/edit-flip-v-svgrepo-com.12c6485d.svg",
     "static/media/info-svgrepo-com.a2695485.svg": "/clummp/static/media/info-svgrepo-com.a2695485.svg",
     "static/media/rotate-left-svgrepo-com.3a1dd75a.svg": "/clummp/static/media/rotate-left-svgrepo-com.3a1dd75a.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2e5dd821.js",
-    "static/js/2.9f168a03.chunk.js",
-    "static/css/main.541990e8.chunk.css",
-    "static/js/main.c779eb45.chunk.js"
+    "static/js/runtime-main.91596db6.js",
+    "static/js/2.3cdb97b6.chunk.js",
+    "static/css/main.f9ffb6f7.chunk.css",
+    "static/js/main.17a4ac72.chunk.js"
   ]
 }
